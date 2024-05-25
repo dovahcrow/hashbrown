@@ -5264,6 +5264,13 @@ impl<'a, K, V: Default, S, A: Allocator> Entry<'a, K, V, S, A> {
     }
 }
 
+impl<'a, K, V, S, A: Allocator> VacantEntry<'a, K, V, S, A> {
+    /// Get the inner table
+    pub fn table(&mut self) -> &mut HashMap<K, V, S, A> {
+        &mut self.table
+    }
+}
+
 impl<'a, K, V, S, A: Allocator> OccupiedEntry<'a, K, V, S, A> {
     /// Gets a reference to the key in the entry.
     ///
